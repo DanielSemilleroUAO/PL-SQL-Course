@@ -1,0 +1,19 @@
+set serveroutput on;
+
+DECLARE
+    
+
+
+BEGIN
+    
+    <<CICLO_TABLA_2>>
+    FOR I IN 1..10 LOOP
+        IF(MOD(i,2) = 0)then
+            -- exit; --Salir
+            continue; -- Saltar
+        end if;
+        dbms_output.put_line(i);
+    END LOOP CICLO_TABLA_2;
+    
+END;
+/

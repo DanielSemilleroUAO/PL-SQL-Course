@@ -1,0 +1,20 @@
+set serveroutput on;
+
+DECLARE
+    
+    nota NUMBER := 85;
+    
+BEGIN
+
+    if(nota >= 90)then
+        dbms_output.put_line('Excelente');
+    ELSIF (nota >= 80)then
+        dbms_output.put_line('Muy bien');
+    elsif (nota >= 70)then
+        dbms_output.put_line('Bien');
+    else 
+        dbms_output.put_line('Necesita mejorar');
+    end if;
+    
+END;
+/

@@ -1,0 +1,101 @@
+set serveroutput on;
+
+DECLARE
+
+-- Definicion de funciones y variables
+    salario number := 1500;
+    nombreEmpleado nvarchar2(100);
+    activo boolean;
+    fecha date;
+-- Definicion de constantes
+    PI CONSTANT number := 3.141559;
+    
+    area number;
+    radio number;
+    
+    cantidad number;
+    usuario NVARCHAR2(100);
+    
+    nombre NVARCHAR2(100) := ' Daniel ';
+    apellido NVARCHAR2(100) := 'Delgado';
+    nombreCompleto NVARCHAR2(200);
+    hoy date := sysdate;
+    
+    nombre2 NVARCHAR2(100);
+    --Arreglos
+    type alumnosArray is VARRAY(5) of NVARCHAR2(100);
+    type notasArray is VARRAY(5)of number;
+    
+    alumnos alumnosArray;
+    notas notasArray;
+    
+BEGIN
+    nombreEmpleado := ' Daniel Delgado ';
+    activo := true;
+    fecha := '21-JUN-20';
+    
+    dbms_output.put_line('Nombre: ' || nombreempleado);
+    dbms_output.put_line('Salario: ' || salario);
+    dbms_output.put_line('Fecha: ' || fecha);
+    dbms_output.put_line('Activo ' || case when activo then 'Si' else 'No' end);
+    
+    radio := 5;
+    area := PI * (radio * radio);
+    dbms_output.put_line('Area: ' ||  round(area,2) || ' cms2');
+ /*   
+    select user into usuario from dual;
+    
+    dbms_output.put_line('Usuario: ' || usuario);
+    
+    select count(*) into cantidad from dual;
+    
+    dbms_output.put_line('Cantidad: ' || cantidad);
+*/
+    select user,count(*) into usuario,cantidad from dual;
+    
+    dbms_output.put_line('Usuario: ' || usuario);
+    
+    dbms_output.put_line('Cantidad: ' || cantidad);
+    
+    dbms_output.put_line('Largo ' || length(nombre));
+    dbms_output.put_line('Trim ' || trim(nombre) || ';');
+    dbms_output.put_line('Minusculas ' || lower(nombre));
+    dbms_output.put_line('Mayúsculas ' || upper(nombre));
+    
+    nombre := trim(nombre);
+    dbms_output.put_line('Cortar ' || substr(nombre,1,3));
+    dbms_output.put_line('Remplaza ' || replace(nombre,'D','H'));
+    
+    dbms_output.put_line('Hoy ' || hoy);
+    dbms_output.put_line('Agregar mes ' || add_months(hoy,1));
+    dbms_output.put_line('Agregar dia' || (hoy + 1));
+    
+    nombreCompleto := nombre || ' ' || apellido; 
+    dbms_output.put_line('Nombre completo: ' || nombreCompleto);
+    
+    dbms_output.put_line('Dia ' || to_char(hoy,'dd'));
+    
+    dbms_output.put_line('Dia mes ' || to_char(hoy,'dd-MM'));
+    
+    dbms_output.put_line('Anio ' || to_char(hoy,'yyyy'));
+    
+    dbms_output.put_line('Nombre vacio ' || NVL(nombre2, 'Es nulo'));
+    
+    
+    alumnos := alumnosArray('Daniel','Alicia','Javier','Samuel','Katerin');
+    notas := notasArray(100,50,31,100,50);
+    
+    dbms_output.put_line(alumnos(1));
+    dbms_output.put_line(alumnos(2));
+    dbms_output.put_line(alumnos(3));
+    
+    dbms_output.put_line(notas(1));
+    
+    notas(1) := 50;
+    
+    dbms_output.put_line(notas(1));
+    
+    
+    
+END;
+/

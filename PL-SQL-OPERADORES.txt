@@ -1,0 +1,37 @@
+set serveroutput on;
+
+DECLARE
+    
+    A number := 5;
+    B number := 10;
+    
+    nombre1 nvarchar2(100) := 'Daniel';
+    nombre2 NVARCHAR2(100);
+
+BEGIN
+    /*
+    if(A <> B ) then
+        dbms_output.put_line('B es diferente de A');
+    end if;
+    */
+    /*
+    if(nombre1 like '%ni%')then
+        dbms_output.put_line('El nombre tiene D');
+    end if;
+    */
+    /*
+    if(A between 0 and 10)then
+        dbms_output.put_line('Esta entre 0 y 10');
+    end if;
+    /*
+    /*
+    if(B in (5,10,15,20))then
+        dbms_output.put_line('B esta en el grupo de elementos');
+    end if;
+    */
+    if(nombre2 is null)then
+        dbms_output.put_line('El nombre 2 es nulo');
+    end if;
+    
+END;
+/
